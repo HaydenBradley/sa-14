@@ -1,0 +1,24 @@
+
+<h1>Currency Converter</h1>
+<%= form_tag(convert_path, method: "get") do %>
+  <%= label_tag :source_currency, "Source Currency" %>
+  <%= select_tag :source_currency, options_for_select(["USD", "EUR", "GBP"], @source_currency) %>
+  <br>
+  <%= label_tag :target_currency, "Target Currency" %>
+  <%= select_tag :target_currency, options_for_select(["USD", "EUR", "GBP"], @target_currency) %>
+  <br>
+  <%= label_tag :amount, "Amount" %>
+  <%= text_field_tag :amount, @amount %>
+  <br>
+  <%= submit_tag "Convert" %>
+<% end %>
+
+<% if @converted_amount.present? %>
+  <h2>Conversion Result</h2>
+  <p><strong>Source Currency:</strong> <%= @source_currency %></p>
+  <p><strong>Target Currency:</strong> <%= @target_currency %></p>
+  <p><strong>Amount:</strong> <%= @amount %></p>
+  <p><strong>Converted Amount:</strong> <%= @converted_amount %></p>
+  <p><strong>Exchange Rate:</strong> <%= @exchange_rate %></p>
+<% end %>
+
